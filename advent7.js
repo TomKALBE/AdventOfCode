@@ -26,11 +26,28 @@ const solve = () => {
             }
 
         }
-        updateSizeOfDirectory(rootNode)
+        const totalSize = updateSizeOfDirectory(rootNode)
         // console.log(rootNode)
         const result = findResult(rootNode, 100000, 0)
-        console.log(result)
+        const placeNeeded = 30000000 - (70000000 - totalSize)
+        const result2 = findResult2(rootNode, null, placeNeeded)
+
+        console.log("First Step :",result, "Second Step :",result2.size)
     })
+}
+const findResult2 = (node, candidateNode, placeNeeded) => {
+    if (!node.isDirectory) return candidateNode;
+    
+
+    for (let child of Object.values(node.children)) 
+        candidateNode = findResult2(child, candidateNode, placeNeeded);
+    
+    if (node.size < placeNeeded) return candidateNode;
+    
+
+    if (!candidateNode || node.size <= candidateNode.size) return node;
+
+    return candidateNode;
 }
 const findResult = (node, max, total) => {
     if(!node.isDirectory) return total;
