@@ -29,7 +29,7 @@ const solve = () => {
         updateSizeOfDirectory(rootNode)
         // console.log(rootNode)
         const result = findResult(rootNode, 100000, 0)
-        console.log(rootNode)
+        console.log(result)
     })
 }
 const findResult = (node, max, total) => {
