@@ -27,9 +27,7 @@ fs.readFile('./input5.txt', 'utf-8', function(err, data) {
             }else{
                 stackDeclaration = false;
                 reverseMap(map)
-                map2 = {
-                    ...map
-                }
+                map2 = JSON.parse(JSON.stringify(map))
             }
         }
         else{
