@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-fs.readFile('./input.txt', 'utf-8', function(err, data) {
+fs.readFile('./input1.txt', 'utf-8', function(err, data) {
     if (err) throw err;
 
     const lines = data.split('\n');
