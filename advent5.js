@@ -7,6 +7,7 @@ fs.readFile('./input5.txt', 'utf-8', function(err, data) {
     let stackDeclaration = true;
     const map = {}
     let map2 = {}
+    
     for (const line of data.split('\n')) {
         if(stackDeclaration){
             if(!line.match(regex)){
@@ -14,7 +15,6 @@ fs.readFile('./input5.txt', 'utf-8', function(err, data) {
                     if(map[Math.floor(i/4) + 1]){
                         if(line[i] != " "){
                             map[Math.floor(i/4) + 1].push(line[i])
-
                         }
                     }
                     else{
@@ -26,6 +26,7 @@ fs.readFile('./input5.txt', 'utf-8', function(err, data) {
                 }
             }else{
                 stackDeclaration = false;
+                console.log(map)
                 reverseMap(map)
                 map2 = JSON.parse(JSON.stringify(map))
             }
@@ -64,3 +65,38 @@ const response = (map) => {
     }
     return result
 }
+
+/*
+    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2
+
+[D]        
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+
+       [Z]
+       [N]
+   [C] [D]
+   [M] [P]
+1   2   3
+
+       [Z]
+       [N]
+[M]    [D]
+[C]    [P]
+ 1  2   3
+
+        [Z]
+        [N]
+        [D]
+[C] [M] [P]
+ 1   2   3
+*/

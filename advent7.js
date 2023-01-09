@@ -27,7 +27,7 @@ const solve = () => {
 
         }
         const totalSize = updateSizeOfDirectory(rootNode)
-        // console.log(rootNode)
+        
         const result = findResult(rootNode, 100000, 0)
         const placeNeeded = 30000000 - (70000000 - totalSize)
         const result2 = findResult2(rootNode, null, placeNeeded)
